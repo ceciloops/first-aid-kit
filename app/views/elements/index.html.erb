@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Elements</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Units</th>
+      <th>Expires at</th>
+      <th>Added at</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @elements.each do |element| %>
+      <tr>
+        <td><%= element.name %></td>
+        <td><%= element.quantity %></td>
+        <td><%= element.category %></td>
+        <td><%= element.expiration %></td>
+        <td><%= element.created_at %></td>
+        <td><%= image_tag element.picture_url, width: '100%' if element.picture.present? %></td>
+        <td><%= link_to 'Show', element %></td>
+        <td><%= link_to 'Edit', edit_element_path(element) %></td>
+        <td><%= link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New Element', new_element_path %></p>

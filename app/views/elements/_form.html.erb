@@ -1,0 +1,46 @@
+<%= form_with(model: element) do |form| %>
+  <% if element.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(element.errors.count, "error") %> prohibited this element from being saved:</h2>
+
+      <ul>
+        <% element.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Units</th>
+        <th>Expires at</th>
+        <th>Picture</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>  <div class="field">
+            <%= form.text_field :name %>
+          </div>
+        </td>
+        <td><%= form.text_field :quantity %></td>
+        <td><%= form.text_field :category %></td>
+        <td><%= form.date_field :expiration %></td>
+        <td><%= form.file_field :picture %></td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
